@@ -1,0 +1,231 @@
+/* ========================================= */
+/* 1. RESET Y ESTILOS GENERALES              */
+/* ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #EEE8DF; /* Tu Beige claro para el fondo general */
+    color: #333;
+}
+
+/* El diseño del Dashboard */
+.contenedor-dashboard {
+    display: flex;
+    height: 100vh; 
+}
+
+/* ========================================= */
+/* 2. MENÚ LATERAL (SIDEBAR)                 */
+/* ========================================= */
+.sidebar {
+    width: 250px;
+    background-color: #2C365A; /* Tu Azul Marino corporativo */
+    color: #EEE8DF; /* Texto Beige clarito */
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-sidebar {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(238, 232, 223, 0.2); /* Línea sutil color beige */
+    margin-bottom: 20px;
+    color: #EEE8DF;
+}
+
+.sidebar ul {
+    list-style-type: none;
+}
+
+.sidebar ul li a {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    color: #EEE8DF;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.sidebar ul li a span {
+    margin-right: 15px;
+}
+
+/* Efecto Hover del menú */
+.sidebar ul li a:hover, .sidebar ul li a.activo {
+    background-color: #C4BCB0; /* Fondo Arena al seleccionar */
+    color: #2C365A; /* Letras azules para destacar */
+    border-left: 4px solid #2C365A; /* Línea indicadora */
+}
+
+/* ========================================= */
+/* 3. ÁREA DE TRABAJO (DERECHA)              */
+/* ========================================= */
+.contenido-principal {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+}
+
+/* Barra superior (Top bar) */
+.barra-top {
+    background-color: white; /* Se queda blanca para dar luz a la zona de trabajo */
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.perfil-usuario {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #2C365A; /* Nombre del usuario en azul marino */
+    font-weight: bold;
+}
+
+/* Contenedor donde pondremos las tablas */
+.area-trabajo {
+    padding: 30px;
+    flex: 1;
+    overflow-y: auto; 
+}
+
+/* ========================================= */
+/* 4. TARJETAS Y ENCABEZADOS                 */
+/* ========================================= */
+.tarjeta-bienvenida {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border-left: 5px solid #2C365A; /* Detalle azul a la izquierda */
+}
+
+.tarjeta-bienvenida h3 {
+    margin-bottom: 10px;
+    color: #2C365A; /* Títulos en azul marino */
+}
+
+.tarjeta-bienvenida p {
+    color: #666;
+}
+
+.encabezado-modulo {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.encabezado-modulo h3 {
+    color: #2C365A; /* Títulos de módulo en azul marino */
+    font-size: 24px;
+}
+
+.subtitulo-modulo {
+    color: #666;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* ========================================= */
+/* 5. BOTONES PRINCIPALES                    */
+/* ========================================= */
+.btn-nuevo {
+    background-color: #2C365A; /* Azul Marino */
+    color: #EEE8DF; /* Letras Beige */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-nuevo:hover {
+    background-color: #C4BCB0; /* Arena al pasar el mouse */
+    color: #2C365A;
+}
+
+/* ========================================= */
+/* 6. TABLAS PROFESIONALES                   */
+/* ========================================= */
+.contenedor-tabla {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+    overflow: hidden; 
+}
+
+.tabla-profesional {
+    width: 100%;
+    border-collapse: collapse; 
+    text-align: left;
+}
+
+.tabla-profesional th, 
+.tabla-profesional td {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee; 
+}
+
+/* Estilo para los títulos de las columnas */
+.tabla-profesional th {
+    background-color: #C4BCB0; /* Color Arena para los encabezados */
+    color: #2C365A; /* Texto azul marino para contraste perfecto */
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+
+.tabla-profesional td {
+    color: #555;
+    font-size: 15px;
+}
+
+.tabla-profesional tbody tr:hover {
+    background-color: #fcfcfc;
+}
+
+/* ========================================= */
+/* 7. ETIQUETAS DE ESTADO (Badges UI)        */
+/* Se mantienen sus colores funcionales      */
+/* ========================================= */
+.etiqueta {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.rol-admin { background-color: #e3f2fd; color: #1565c0; }
+.rol-empleado { background-color: #f3e5f5; color: #7b1fa2; }
+.estado-activo { background-color: #e8f5e9; color: #2e7d32; }
+.estado-inactivo { background-color: #ffebee; color: #c62828; }
+
+/* ========================================= */
+/* 8. BOTONES DE ACCIÓN (Editar/Eliminar)    */
+/* ========================================= */
+.btn-accion {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    margin-right: 10px;
+    opacity: 0.7;
+    transition: 0.2s;
+    /* Si usan iconos Material Symbols, heredarán el color negro/gris por defecto */
+}
+
+.btn-accion:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}

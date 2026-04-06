@@ -1,0 +1,195 @@
+/* ========================================= */
+/* 1. RESET Y ESTILOS GENERALES              */
+/* ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #EEE8DF; /* Unificamos el fondo general en caso de que la imagen tarde en cargar */
+}
+
+/* ========================================= */
+/* 2. BARRAS SUPERIOR E INFERIOR             */
+/* ========================================= */
+.barra_superior {
+    background-color: #2C365A; /* Tu Azul Marino */
+    height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    color: #EEE8DF; /* Texto Beige clarito */
+}
+
+.barra_inferior {
+    background-color: #EEE8DF; /* Beige clarito en lugar de blanco para hacer un "marco" suave */
+    height: 80px; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+/* ========================================= */
+/* 3. IMAGEN DE FONDO Y TEXTOS PRINCIPALES   */
+/* ========================================= */
+.imagen {
+    flex: 1; 
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/imagenes/portada.jpg');
+    background-size: cover;
+    background-position: center;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0; 
+}
+
+h1 {
+    color: #EEE8DF; /* Beige claro en lugar de blanco puro */
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 60px;
+}
+
+h3 {
+    color: #C4BCB0; /* Tu color Arena para el subtítulo, le da un contraste sutil */
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: normal;
+    font-size: 45px;
+}
+
+/* ========================================= */
+/* 4. BOTONES DE SELECCIÓN (Rol)             */
+/* ========================================= */
+.botones {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.botones button {
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: transparent;
+    color: #EEE8DF; /* Beige claro */
+    border: 2px solid #EEE8DF; /* Borde Beige claro */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.botones button:hover {
+    background-color: #C4BCB0; /* Fondo Arena al pasar el mouse */
+    border-color: #C4BCB0;
+    color: #2C365A; /* Texto Azul Marino para que resalte */
+}
+
+/* ========================================= */
+/* 5. TARJETAS DE LOGIN (Formularios)        */
+/* ========================================= */
+#empleado, #administrador {
+    background-color: white; /* Lo dejamos blanco para que resalte sobre el fondo oscuro de la imagen */
+    width: 400px;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5); 
+    display: none; 
+}
+
+#empleado h2, #administrador h2 {
+    text-align: center;
+    color: #2C365A; /* Títulos de los formularios en Azul Marino */
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+
+/* ========================================= */
+/* 6. INPUTS (Cajas de texto)                */
+/* ========================================= */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 14px;
+    color: #666;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+input[type="text"], 
+input[type="password"] {
+    border: none;
+    border-bottom: 2px solid #ddd;
+    padding: 10px 0;
+    margin-bottom: 20px;
+    font-size: 14px;
+    outline: none; 
+    transition: border-color 0.3s;
+}
+
+/* Cambia la línea a Azul Marino cuando el usuario está escribiendo */
+input[type="text"]:focus, 
+input[type="password"]:focus {
+    border-bottom: 2px solid #2C365A; 
+}
+
+/* ========================================= */
+/* 7. BOTONES DEL FORMULARIO                 */
+/* ========================================= */
+/* Botón principal de Iniciar Sesión */
+button[type="submit"] {
+    background-color: #2C365A; /* Adiós verde, hola Azul Marino */
+    color: #EEE8DF; /* Texto Beige clarito */
+    border: none;
+    padding: 15px;
+    border-radius: 30px; 
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #C4BCB0; /* Color Arena al pasar el mouse */
+    color: #2C365A; /* Texto azul para buen contraste */
+}
+
+/* Texto pequeño del pie del formulario */
+form p {
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+    margin-top: 25px;
+}
+
+/* Botón secundario para Volver atrás */
+.atras {
+    background-color: transparent;
+    color: #666; 
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 30px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.atras:hover {
+    background-color: #EEE8DF; /* Fondo beige suavecito al pasar el mouse */
+    color: #2C365A;
+    border-color: #2C365A;
+}
