@@ -33,7 +33,11 @@
                 <input type="text" id="empleado-username" name="empleado-username" required>
                 <label for="empleado-password">Contraseña:</label>
                 <input type="password" id="empleado-password" name="empleado-password" required>
-                <button type="submit">Iniciar Sesión</button>
+                
+                 <form action="/login" method="POST">
+                    <button type="submit">Iniciar Sesión</button>
+                </form>
+
                 <button type="button" class="atras" onclick="volverAtras()">Atrás</button>
                 <p>Sistema de préstamos y servicio al usuario</p>
             </form>
