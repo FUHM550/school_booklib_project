@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos/style.css') }}">
+    <title>Inicio de Sesión - Autenticación</title>
+</head>
+<body>
+
+    <header class="barra_superior">
+        <div class="logo">
+            <h2>📖 Librería Pro</h2>
+        </div>
+    </header>
+
+    <main class="imagen">
+        
+        <div id="bienvenida">
+            <h1>Bienvenido a nuestra Librería</h1>
+            <h3>¿Quién iniciará sesión?</h3>
+            <div class="botones">
+                <button onclick="mostrarFormulario('administrador')">Administrador</button>
+                <button onclick="mostrarFormulario('empleado')">Empleado</button>
+            </div>
+        </div>
+
+        <div id="empleado" class="oculto">
+            <h2>Iniciar sesión como Empleado</h2>
+            <form action="/login" method="POST">
+                <label>Usuario:</label>
+                <input type="text" name="username" required>
+                
+                <label>Contraseña:</label>
+                <input type="password" name="password" required>
+                
+                <button type="submit">Iniciar Sesión</button>
+                <button type="button" class="atras" onclick="volverAtras()">Atrás</button>
+                <p>Sistema de préstamos y servicio al usuario</p>
+            </form>
+        </div>
+
+        <div id="administrador" class="oculto">
+            <h2>Iniciar sesión como Administrador</h2>
+            <form action="/login" method="POST">
+                <label>Usuario:</label>
+                <input type="text" name="username" required>
+                
+                <label>Contraseña:</label>
+                <input type="password" name="password" required>
+                
+                <button type="submit">Iniciar Sesión</button>
+                <button type="button" class="atras" onclick="volverAtras()">Atrás</button>
+                <p>Sistema de gestión de la librería</p>
+            </form>
+        </div>
+
+    </main>
+
+    <footer class="barra_inferior">
+        <p>© 2026 Librería Pro. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='funcionesjs/script.js') }}"></script>
+</body>
+</html>

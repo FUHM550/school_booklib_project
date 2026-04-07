@@ -40,7 +40,7 @@ body {
 /* ========================================= */
 .imagen {
     flex: 1; 
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/imagenes/portada.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../imagenes/portada.jpg');
     background-size: cover;
     background-position: center;
     

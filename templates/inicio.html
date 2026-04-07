@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='estilos/style.css') }}">
-    <title>Inicio de Sesión</title>
+    <title>Inicio - Acceso Directo</title>
 </head>
 <body>
 
@@ -18,50 +18,37 @@
         
         <div id="bienvenida">
             <h1>Bienvenido a nuestra Librería</h1>
-            <h3>¿Quién iniciará sesión?</h3>
-
+            <h3>Acceso Rápido (Demo)</h3>
             <div class="botones">
                 <button onclick="mostrarFormulario('administrador')">Administrador</button>
                 <button onclick="mostrarFormulario('empleado')">Empleado</button>
             </div>
         </div>
 
-        <div id="empleado">
-            <h2>Iniciar sesión como Empleado</h2>
-            <form>
-                <label for="empleado-username">Usuario:</label>
-                <input type="text" id="empleado-username" name="empleado-username" required>
-                <label for="empleado-password">Contraseña:</label>
-                <input type="password" id="empleado-password" name="empleado-password" required>
-                
-                 <form action="/login" method="POST">
-                    <button type="submit">Iniciar Sesión</button>
-                </form>
-
-                <button type="button" class="atras" onclick="volverAtras()">Atrás</button>
-                <p>Sistema de préstamos y servicio al usuario</p>
-            </form>
+        <div id="empleado" class="oculto">
+            <h2>Acceso como Empleado</h2>
+            <p>En esta versión demo, el acceso es sin credenciales.</p>
+            <a href="{{ url_for('empleado_panel') }}">
+                <button type="button">Ingresar al Panel</button>
+            </a>
+            <button type="button" class="atras" onclick="volverAtras()">Atrás</button>
         </div>
 
-        <div id="administrador">
-            <h2>Iniciar sesión como Administrador</h2>
-            <form>
-                <label for="administrador-username">Usuario:</label>
-                <input type="text" id="administrador-username" name="administrador-username" required>
-                <label for="administrador-password">Contraseña:</label>
-                <input type="password" id="administrador-password" name="administrador-password" required>
-                <button type="submit">Iniciar Sesión</button>
-                <button type="button" class="atras" onclick="volverAtras()">Atrás</button>
-                <p>Sistema de gestión de la librería</p>
-            </form>
+        <div id="administrador" class="oculto">
+            <h2>Acceso como Administrador</h2>
+            <p>En esta versión demo, el acceso es sin credenciales.</p>
+            <a href="{{ url_for('admin_panel') }}">
+                <button type="button">Ingresar al Panel</button>
+            </a>
+            <button type="button" class="atras" onclick="volverAtras()">Atrás</button>
         </div>
 
     </main>
 
-        <footer class="barra_inferior">
-            <p>© 2026 Librería Pro. Todos los derechos reservados.</p>
-        </footer>
+    <footer class="barra_inferior">
+        <p>© 2026 Librería Pro. Todos los derechos reservados.</p>
+    </footer>
 
-    <script src="/funcionesjs/script.js"></script>
+    <script src="{{ url_for('static', filename='funcionesjs/script.js') }}"></script>
 </body>
 </html>
