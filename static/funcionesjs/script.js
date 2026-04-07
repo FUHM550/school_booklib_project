@@ -1,26 +1,31 @@
-// Esta función recibe un "tipo" (que será 'admin' o 'empleado')
+// Función para mostrar el formulario según el tipo de usuario
 function mostrarFormulario(tipoUsuario) {
-    
-    //Ocultamos la pantalla de bienvenida
-    document.getElementById('bienvenida').style.display = 'none';
-    
-    // 2. Revisamos qué botón presionaron y mostramos el formulario correspondiente
-    if (tipoUsuario === 'empleado') {
-        // Mostramos el div del empleado
-        document.getElementById('empleado').style.display = 'block';
-    } 
-    else if (tipoUsuario === 'administrador') {
-        // Mostramos el div del administrador
-        document.getElementById('administrador').style.display = 'block';
+    const bienvenida = document.getElementById('bienvenida');
+    const formularios = ['empleado', 'administrador'];
+
+    // Ocultamos la pantalla de bienvenida
+    bienvenida.classList.add('oculto');
+
+    // Ocultamos todos los formularios primero
+    formularios.forEach(id => document.getElementById(id).classList.add('oculto'));
+
+    // Validamos que el tipo de usuario sea válido
+    if (formularios.includes(tipoUsuario)) {
+        document.getElementById(tipoUsuario).classList.remove('oculto');
+    } else {
+        console.warn(`Tipo de usuario inválido: ${tipoUsuario}`);
+        bienvenida.classList.remove('oculto'); // Volvemos a mostrar bienvenida si es inválido
     }
 }
 
 // Función para regresar al menú principal
 function volverAtras() {
-    //Ocultamos ambos formularios (por si acaso)
-    document.getElementById('empleado').style.display = 'none';
-    document.getElementById('administrador').style.display = 'none';
-    
-    //Volvemos a mostrar la pantalla de bienvenida original
-    document.getElementById('bienvenida').style.display = 'block';
+    const bienvenida = document.getElementById('bienvenida');
+    const formularios = ['empleado', 'administrador'];
+
+    // Ocultamos todos los formularios
+    formularios.forEach(id => document.getElementById(id).classList.add('oculto'));
+
+    // Mostramos la pantalla de bienvenida
+    bienvenida.classList.remove('oculto');
 }
