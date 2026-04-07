@@ -39,9 +39,16 @@ Proyecto libreria
 	
     venv	                Isolates project dependencies (PEP 668 compliant).
 
-   3.commandsfor linux
+   3.commands 
 
-               commands to open project in websocket:
+        Task             |   Linux Command	           |     Windows (PowerShell)
+    Create Venv	python3  | -m venv venv	               |  python -m venv venv
+    Activate Venv	     | source venv/bin/activate    |  .\venv\Scripts\activate
+    Install Flask	     | pip install flask	       |  pip install flask
+    Run App	python3      | app.py	                   |  python app.py
+
+
+               commands to open project in websocket for linux:
 
         cd ~/home/school_booklib_project/venv/bin
         source activate
