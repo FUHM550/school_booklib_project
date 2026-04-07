@@ -12,14 +12,7 @@ Proyecto libreria
 
         VS Code, or similar IDE. 
 
-        SQLite3: To manage the database via terminal. [optional].
-
-            commands to open project in websocket:
-
-        cd ~/home/school_booklib_project/venv/bin
-        source activate
-        cd ../..
-        python3 app.py
+        SQLite3: To manage the database via terminal [optional].
 
 
     Windows
@@ -28,3 +21,29 @@ Proyecto libreria
         VS Code: Downloaded from the official site.
 
         C++ Build Tools: Sometimes required by Python libraries, though not strictly for Flask/SQLite.
+
+
+
+
+   2. Tools
+   
+    Python 3	            Handles the server-side logic and DB connection.
+
+	Flask	                The "micro-framework" that routes URLs to functions.
+
+	SQLite	                A file-based SQL engine (no server installation required).
+
+	HTML5 / CSS3	        The structure and design of the UI.
+
+	JavaScript          	Handles UI transitions and button clicks.
+	
+    venv	                Isolates project dependencies (PEP 668 compliant).
+
+   3.commandsfor linux
+
+               commands to open project in websocket:
+
+        cd ~/home/school_booklib_project/venv/bin
+        source activate
+        cd ../..
+        python3 app.py
