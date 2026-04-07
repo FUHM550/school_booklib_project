@@ -193,3 +193,6 @@ form p {
     color: #2C365A;
     border-color: #2C365A;
 }
+.oculto {
+    display: none !important;
+}

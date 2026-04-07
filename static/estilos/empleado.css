@@ -166,9 +166,6 @@ header input {
 /* ========================================= */
 /* 7. GESTIÓN DE VISTAS Y FORMULARIOS        */
 /* ========================================= */
-.oculto {
-    display: none !important; 
-}
 
 .formulario-cliente {
     background-color: white; /* Blanco para separar del fondo general */
