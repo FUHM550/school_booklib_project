@@ -75,6 +75,21 @@ def empleado_panel():
         return redirect(url_for('index'))
     return render_template('empleado.html')
 
+# --- empleados routes ---}
+@app.route('/empleado/inventario')
+def empleado_inventario():
+    if session.get('rol') != 'Empleado':
+        return redirect(url_for('index'))
+    libros = db.get_all_books()
+    return render_template('emp_inventario.html', libros=libros)
+
+@app.route('/empleado/prestamos')
+def empleado_prestamos():
+    if session.get('rol') != 'Empleado':
+        return redirect(url_for('index'))
+    prestamos = db.get_all_prestamos()
+    return render_template('emp_prestamos.html', prestamos=prestamos)
+
 # --- exit route ---
 @app.route('/logout')
 def logout():
