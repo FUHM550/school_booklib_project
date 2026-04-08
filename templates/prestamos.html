@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Préstamos - Librería Pro</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos/admin.css') }}">
+</head>
+<body>
+    <div class="contenedor-dashboard">
+        <main class="contenido-principal">
+            <header class="barra-top"><h2>Control de Préstamos</h2></header>
+            <section class="area-trabajo">
+                <div class="encabezado-modulo">
+                    <h3>Registro de Préstamos Activos</h3>
+                    <button class="btn-nuevo">Nuevo Préstamo</button>
+                </div>
+                <div class="contenedor-tabla">
+                    <table class="tabla-profesional">
+                        <thead>
+                            <tr>
+                                <th>Usuario</th>
+                                <th>Libro</th>
+                                <th>Fecha Salida</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Juan Pérez</td>
+                                <td>Don Quijote</td>
+                                <td>05/04/2026</td>
+                                <td><span class="etiqueta estado-activo">Pendiente</span></td>
+                                <td><button class="btn-accion">✅</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
