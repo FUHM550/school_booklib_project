@@ -1,5 +1,6 @@
 name: Build Windows EXE
 on: [push]
+
 jobs:
   build:
     runs-on: windows-latest
@@ -10,7 +11,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: '3.11' # 3.11 is the most stable for PyInstaller builds
           
       - name: Install dependencies
         run: |
@@ -18,10 +19,15 @@ jobs:
           pip install flask pyinstaller
           
       - name: Build EXE
-        run: pyinstaller --noconflict --noconsole --add-data "templates;templates" --add-data "static;static" --add-data "db.sqlite;." --onefile app.py
+        run: |
+          pyinstaller --noconflict --noconsole --onefile `
+          --add-data "templates;templates" `
+          --add-data "static;static" `
+          --add-data "db.sqlite;." `
+          app.py
           
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: LibreriaPro-Windows-EXE
+          name: LibreriaPro-Windows
           path: dist/app.exe
