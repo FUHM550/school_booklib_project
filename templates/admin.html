@@ -17,10 +17,19 @@
                 <h2>📖 Librería Pro</h2>
             </div>
             <ul>
-                <li><a href="{{ url_for('admin_panel') }}" class="activo"><span class="material-symbols-outlined">home</span> Inicio</a></li>
+                <li>
+                    <a href="{{ url_for('admin_panel' if session['rol'] == 'Administrador' else 'empleado_panel') }}">
+                        <span class="material-symbols-outlined">home</span> Inicio
+                    </a>
+                </li>
+                
                 <li><a href="{{ url_for('admin_inventario') }}"><span class="material-symbols-outlined">inventory_2</span> Inventario</a></li>
                 <li><a href="{{ url_for('admin_prestamos') }}"><span class="material-symbols-outlined">menu_book</span> Préstamos</a></li>
+
+                {% if session['rol'] == 'Administrador' %}
                 <li><a href="{{ url_for('admin_empleados') }}"><span class="material-symbols-outlined">group</span> Empleados</a></li>
+                {% endif %}
+
                 <li><a href="{{ url_for('logout') }}"><span class="material-symbols-outlined">logout</span> Salir</a></li>
             </ul>
         </nav>
@@ -57,31 +66,35 @@
                                 <th>Nombre Completo</th>
                                 <th>Rol</th>
                                 <th>Estado</th>
-                                <th>Acciones</th>
+                                {% if session['rol']|string == 'Administrador' %}
+                                    <th>Acciones</th>
+                                {% endif %}
                             </tr>
                         </thead>
-                 <tbody>
-                    {% for usuario in usuarios %}
-                    <tr>
-                        <td>{{ usuario['id_usuario'] }}</td>
-                        <td>{{ usuario['nombre_completo'] }}</td>
-                        <td>
-                            <span class="etiqueta {% if usuario['rol'] == 'Administrador' %}rol-admin{% else %}rol-empleado{% endif %}">
-                                {{ usuario['rol'] }}
-                            </span>
-                        </td>
-                        <td>
-                            <span class="etiqueta {% if usuario['estado'] == 'Activo' %}estado-activo{% else %}estado-inactivo{% endif %}">
-                                {{ usuario['estado'] }}
-                            </span>
-                        </td>
-                        <td>
-                            <button class="btn-accion" title="Editar">✏️</button>
-                            <button class="btn-accion" title="Eliminar">🗑️</button>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
+                        <tbody>
+                            {% for usuario in usuarios %}
+                            <tr>
+                                <td>{{ usuario['id_usuario'] }}</td>
+                                <td>{{ usuario['nombre_completo'] }}</td>
+                                <td>
+                                    <span class="etiqueta {% if usuario['rol'] == 'Administrador' %}rol-admin{% else %}rol-empleado{% endif %}">
+                                        {{ usuario['rol'] }}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="etiqueta {% if usuario['estado'] == 'Activo' %}estado-activo{% else %}estado-inactivo{% endif %}">
+                                        {{ usuario['estado'] }}
+                                    </span>
+                                </td>
+                                {% if session['rol'] == 'Administrador' %}
+                                <td>
+                                    <button class="btn-accion" title="Editar">✏️</button>
+                                    <button class="btn-accion" title="Eliminar">🗑️</button>
+                                </td>
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
                     </table>
                 </div>
 
