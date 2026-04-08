@@ -4,7 +4,8 @@ import os
 DB_PATH = os.path.join(os.path.dirname(__file__), 'db.sqlite')
 
 def get_db_connection():
-    conn = sqlite3.connect(DB_PATH)
+    db_path = resource_path('db.sqlite')
+    conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
     return conn
 

@@ -2,6 +2,15 @@
 from flask import Flask, render_template, request, redirect, session, url_for
 import database_manager as db
 
+import os
+import sys
+
+def resource_path(relative_path):
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative_path)
+    return os.path.join(os.path.abspath("."), relative_path)
+
+
 # --- flask calling ---
 app = Flask(__name__)
 app.secret_key = 'proyecto_libreria_secret'
@@ -43,6 +52,8 @@ def admin_panel():
     usuarios = db.get_all_users()
     return render_template('admin.html', usuarios=usuarios)
 
+# --- unified routes ---
+
 @app.route('/admin/inventario')
 def admin_inventario():
     if session.get('rol') not in ['Administrador', 'Empleado']:
@@ -58,6 +69,8 @@ def admin_prestamos():
     
     prestamos = db.get_all_prestamos()
     return render_template('prestamos.html', prestamos=prestamos)
+
+# --- restricted route ---
 
 @app.route('/admin/empleados')
 def admin_empleados():
