@@ -17,8 +17,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install flask pyinstaller
           
-      - name: Build EXE
-        run: pyinstaller --noconflict --noconsole --add-data "templates;templates" --add-data "static;static" --add-data "db.sqlite;." --onefile app.py
+    - name: Build EXE
+            run: |
+              # This helps us see if the files actually exist before building
+              dir 
+              pyinstaller --noconflict --noconsole --add-data "templates;templates" --add-data "static;static" --add-data "db.sqlite;." --onefile --collect-all flask app.py
           
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
