@@ -4,19 +4,23 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4 # Updated to v4
+      
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5 # Updated to v5
         with:
           python-version: '3.12'
+          
       - name: Install dependencies
         run: |
           pip install flask pyinstaller
+          
       - name: Build EXE
         run: |
           pyinstaller --noconflict --noconsole --add-data "templates;templates" --add-data "static;static" --add-data "db.sqlite;." --onefile app.py
+          
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4 # Fixed the error here
         with:
-          name: LibreriaPro-Windows
+          name: LibreriaPro-Windows-EXE
           path: dist/app.exe
