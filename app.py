@@ -34,7 +34,7 @@ def login():
             
     return "Usuario o contraseña incorrectos. Intenta de nuevo."
 
-# --- admin routes ---
+# --- section routes ---
 @app.route('/admin')
 def admin_panel():
     if session.get('rol') != 'Administrador':
@@ -45,7 +45,7 @@ def admin_panel():
 
 @app.route('/admin/inventario')
 def admin_inventario():
-    if session.get('rol') != 'Administrador':
+    if session.get('rol') not in ['Administrador', 'Empleado']:
         return redirect(url_for('index'))
     
     libros = db.get_all_books()
@@ -53,12 +53,11 @@ def admin_inventario():
 
 @app.route('/admin/prestamos')
 def admin_prestamos():
-    if session.get('rol') != 'Administrador':
+    if session.get('rol') not in ['Administrador', 'Empleado']:
         return redirect(url_for('index'))
     
     prestamos = db.get_all_prestamos()
     return render_template('prestamos.html', prestamos=prestamos)
-
 
 @app.route('/admin/empleados')
 def admin_empleados():
