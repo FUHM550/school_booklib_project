@@ -60,18 +60,28 @@
                                 <th>Acciones</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>001</td>
-                                <td>Carlos Mendoza</td>
-                                <td><span class="etiqueta rol-admin">Administrador</span></td>
-                                <td><span class="etiqueta estado-activo">Activo</span></td>
-                                <td>
-                                    <button class="btn-accion" title="Editar">✏️</button>
-                                    <button class="btn-accion" title="Eliminar">🗑️</button>
-                                </td>
-                            </tr>
-                            </tbody>
+                 <tbody>
+                    {% for usuario in usuarios %}
+                    <tr>
+                        <td>{{ usuario['id_usuario'] }}</td>
+                        <td>{{ usuario['nombre_completo'] }}</td>
+                        <td>
+                            <span class="etiqueta {% if usuario['rol'] == 'Administrador' %}rol-admin{% else %}rol-empleado{% endif %}">
+                                {{ usuario['rol'] }}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="etiqueta {% if usuario['estado'] == 'Activo' %}estado-activo{% else %}estado-inactivo{% endif %}">
+                                {{ usuario['estado'] }}
+                            </span>
+                        </td>
+                        <td>
+                            <button class="btn-accion" title="Editar">✏️</button>
+                            <button class="btn-accion" title="Eliminar">🗑️</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
                     </table>
                 </div>
 

@@ -46,6 +46,7 @@ def get_all_prestamos():
     prestamos = conn.execute(query).fetchall()
     conn.close()
     return prestamos
+
 # --- tranlation (forgot the thing was in spanish lol) ---
 def get_all_loans():
     return get_all_prestamos()

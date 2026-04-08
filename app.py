@@ -39,7 +39,9 @@ def login():
 def admin_panel():
     if session.get('rol') != 'Administrador':
         return redirect(url_for('index'))
-    return render_template('admin.html')
+    
+    usuarios = db.get_all_users()
+    return render_template('admin.html', usuarios=usuarios)
 
 @app.route('/admin/inventario')
 def admin_inventario():
