@@ -39,13 +39,18 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {% for libro in libros %}
                             <tr>
-                                <td>978-0123456</td>
-                                <td>Cien Años de Soledad</td>
-                                <td>Gabriel García Márquez</td>
-                                <td>15</td>
-                                <td><button class="btn-accion">✏️</button><button class="btn-accion">🗑️</button></td>
+                                <td>{{ libro['isbn'] }}</td>
+                                <td>{{ libro['titulo'] }}</td>
+                                <td>{{ libro['autor'] }}</td>
+                                <td>{{ libro['stock_total'] }}</td>
+                                <td>
+                                    <button class="btn-accion" title="Editar">✏️</button>
+                                    <button class="btn-accion" title="Eliminar">🗑️</button>
+                                </td>
                             </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>

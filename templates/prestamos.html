@@ -39,13 +39,21 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {% for p in prestamos %}
                             <tr>
-                                <td>Juan Pérez</td>
-                                <td>Don Quijote</td>
-                                <td>05/04/2026</td>
-                                <td><span class="etiqueta estado-activo">Pendiente</span></td>
-                                <td><button class="btn-accion">✅</button></td>
+                                <td>{{ p['nombre_usuario'] }}</td> <td>{{ p['titulo'] }}</td>
+                                <td>{{ p['fecha_prestamo'] }}</td>
+                                <td>{{ p['fecha_limite'] }}</td>
+                                <td>
+                                    <span class="etiqueta 
+                                        {% if p['estado'] == 'Devuelto' %}estado-activo
+                                        {% elif p['estado'] == 'Atrasado' %}estado-inactivo
+                                        {% else %}rol-empleado{% endif %}">
+                                        {{ p['estado'] }}
+                                    </span>
+                                </td>
                             </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>

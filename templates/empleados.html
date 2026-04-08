@@ -27,6 +27,35 @@
                     <h3>Lista de Empleados</h3>
                     <button class="btn-nuevo">+ Nuevo Registro</button>
                 </div>
+
+<div class="contenedor-tabla">
+                    <table class="tabla-profesional">
+                        <thead>
+                            <tr>
+                                <th>NOMBRE EMPLEADO</th>
+                                <th>USUARIO</th>
+                                <th>ROL</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for usuario in usuarios %}
+                            <tr>
+                                <td>{{ usuario.username }}</td> <td>{{ usuario.username }}</td> <td>
+                                    <span class="etiqueta {% if usuario.rol == 'Administrador' %}rol-admin{% else %}rol-empleado{% endif %}">
+                                        {{ usuario.rol }}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="etiqueta {% if usuario.estado == 'Activo' %}estado-activo{% else %}estado-inactivo{% endif %}">
+                                        {{ usuario.estado }}
+                                    </span>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
                 </section>
         </main>
     </div>
