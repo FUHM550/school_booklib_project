@@ -55,3 +55,11 @@ Proyecto libreria
         source activate
         cd ../..
         python3 app.py
+
+
+for windows
+install python 64bits : https://www.python.org/downloads/windows/
+        inside the folder Run: pip install flask
+        Run: python app.py
+
+        Open in browser to http://127.0.0.1:5000
