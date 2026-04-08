@@ -1,11 +1,16 @@
 import sqlite3
 import os
+import sys
 
-DB_PATH = os.path.join(os.path.dirname(__file__), 'db.sqlite')
+def resource_path(relative_path):
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative_path)
+    return os.path.join(os.path.abspath("."), relative_path)
+
+DB_PATH = resource_path('db.sqlite')
 
 def get_db_connection():
-    db_path = resource_path('db.sqlite')
-    conn = sqlite3.connect(db_path)
+    conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     return conn
 
