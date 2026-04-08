@@ -15,45 +15,20 @@
     </header>
 
     <main class="imagen">
+
         <div id="bienvenida">
             <h1>Bienvenido a nuestra Librería</h1>
             <h3>¿Quién iniciará sesión?</h3>
-            <div class="botones">
-                <button type="button" onclick="mostrarFormulario('administrador')">Administrador</button>
-                <button type="button" onclick="mostrarFormulario('empleado')">Empleado</button>
-            </div>
-        </div>
+        <div class="botones">
+            <a href="{{ url_for('login_page', rol='administrador') }}" class="btn-link">
+                <button type="button">Administrador</button>
+            </a>
 
-        <div id="empleado" class="card-login oculto">
-            <h2>Iniciar sesión como Empleado</h2>
-            <form action="/login" method="POST">
-                <label for="emp-user">Usuario:</label>
-                <input type="text" id="emp-user" name="username" required>
-                
-                <label for="emp-pass">Contraseña:</label>
-                <input type="password" id="emp-pass" name="password" required>
-                
-                <button type="submit">Iniciar Sesión</button>
-                <button type="button" class="atras" onclick="volverAtras()">Atrás</button>
-                <p>Sistema de préstamos y servicio al usuario</p>
-            </form>
+            <a href="{{ url_for('login_page', rol='empleado') }}" class="btn-link">
+                <button type="button">Empleado</button>
+            </a>
         </div>
-
-        <div id="administrador" class="card-login oculto">
-            <h2>Iniciar sesión como Administrador</h2>
-            <form action="/login" method="POST">
-                <label for="admin-user">Usuario:</label>
-                <input type="text" id="admin-user" name="username" required>
-                
-                <label for="admin-pass">Contraseña:</label>
-                <input type="password" id="admin-pass" name="password" required>
-                
-                <button type="submit">Iniciar Sesión</button>
-                <button type="button" class="atras" onclick="volverAtras()">Atrás</button>
-                <p>Sistema de gestión de la librería</p>
-            </form>
         </div>
-
     </main>
 
     <footer class="barra_inferior">

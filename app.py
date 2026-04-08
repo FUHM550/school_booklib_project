@@ -13,9 +13,16 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row
     return conn
 
+# --- ROUTES ---
+
 @app.route('/')
 def index():
     return render_template('inicio.html')
+
+@app.route('/login_page/<rol>')
+def login_page(rol):
+    # This now sits safely above the app.run command
+    return render_template('login.html', rol=rol)
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -23,7 +30,6 @@ def login():
     pass_input = request.form.get('password')
     
     conn = get_db_connection()
-    # using table names 'Usuarios_Sistema' and column 'password_hash'
     user = conn.execute('SELECT * FROM Usuarios_Sistema WHERE username = ? AND password_hash = ?',
                     (user_input, pass_input)).fetchone()
     conn.close()
@@ -35,7 +41,6 @@ def login():
         session['user_id'] = user['id_usuario']
         session['rol'] = user['rol']
         
-        # Matches your SQL ENUMs: 'Administrador' and 'Empleado'
         if user['rol'] == 'Administrador':
             return redirect(url_for('admin_panel'))
         else:
@@ -59,6 +64,8 @@ def empleado_panel():
 def logout():
     session.clear()
     return redirect(url_for('index'))
+
+# --- EXECUTION (Must be at the very bottom) ---
 
 if __name__ == '__main__':
     app.run(debug=True)

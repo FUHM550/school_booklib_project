@@ -15,6 +15,13 @@ body {
     background-color: #EEE8DF; /* Unificamos el fondo general en caso de que la imagen tarde en cargar */
 }
 
+.card-login {
+    display: block; 
+    background-color: white;
+    width: 400px;
+    padding: 40px;
+    border-radius: 15px;
+}
 /* ========================================= */
 /* 2. BARRAS SUPERIOR E INFERIOR             */
 /* ========================================= */
@@ -193,6 +200,4 @@ form p {
     color: #2C365A;
     border-color: #2C365A;
 }
-.oculto {
-    display: none !important;
-}
+
