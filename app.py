@@ -21,7 +21,6 @@ def index():
 
 @app.route('/login_page/<rol>')
 def login_page(rol):
-    # This now sits safely above the app.run command
     return render_template('login.html', rol=rol)
 
 @app.route('/login', methods=['POST'])
@@ -60,12 +59,30 @@ def empleado_panel():
         return redirect(url_for('index'))
     return render_template('empleado.html')
 
+@app.route('/admin/inventario')
+def admin_inventario():
+    if session.get('rol') != 'Administrador':
+        return redirect(url_for('index'))
+    return render_template('inventario.html')
+
+@app.route('/admin/prestamos')
+def admin_prestamos():
+    if session.get('rol') != 'Administrador':
+        return redirect(url_for('index'))
+    return render_template('prestamos.html')
+
+@app.route('/admin/empleados')
+def admin_empleados():
+    if session.get('rol') != 'Administrador':
+        return redirect(url_for('index'))
+    return render_template('empleados.html')
+
 @app.route('/logout')
 def logout():
     session.clear()
     return redirect(url_for('index'))
 
-# --- EXECUTION (Must be at the very bottom) ---
+# --- EXECUTION, oleave at the buttom ---
 
 if __name__ == '__main__':
     app.run(debug=True)
