@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Inventario - Librería Pro</title>
+    <title>Empleados - Librería Pro</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="{{ url_for('static', filename='estilos/admin.css') }}">
 </head>
@@ -21,35 +21,13 @@
             </ul>
         </nav>
         <main class="contenido-principal">
-            <header class="barra-top"><h2>Gestión de Inventario</h2></header>
+            <header class="barra-top"><h2>Gestión de Personal</h2></header>
             <section class="area-trabajo">
                 <div class="encabezado-modulo">
-                    <h3>Libros Disponibles</h3>
-                    <button class="btn-nuevo">+ Agregar Libro</button>
+                    <h3>Lista de Empleados</h3>
+                    <button class="btn-nuevo">+ Nuevo Registro</button>
                 </div>
-                <div class="contenedor-tabla">
-                    <table class="tabla-profesional">
-                        <thead>
-                            <tr>
-                                <th>ISBN</th>
-                                <th>Título</th>
-                                <th>Autor</th>
-                                <th>Stock</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>978-0123456</td>
-                                <td>Cien Años de Soledad</td>
-                                <td>Gabriel García Márquez</td>
-                                <td>15</td>
-                                <td><button class="btn-accion">✏️</button><button class="btn-accion">🗑️</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
+                </section>
         </main>
     </div>
 </body>

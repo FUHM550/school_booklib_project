@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 app.secret_key = 'proyecto_libreria_secret'
 
-# utility to path to db
+# ---  Path to db ---
 DB_PATH = os.path.join(os.path.dirname(__file__), 'db.sqlite')
 
 def get_db_connection():
@@ -13,7 +13,7 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row
     return conn
 
-# --- ROUTES ---
+# --- Public routes ---
 
 @app.route('/')
 def index():
@@ -47,11 +47,45 @@ def login():
             
     return "Usuario o contraseña incorrectos. Intenta de nuevo."
 
+# --- Admin routes ---
+
 @app.route('/admin')
 def admin_panel():
     if session.get('rol') != 'Administrador':
         return redirect(url_for('index'))
     return render_template('admin.html')
+
+@app.route('/admin/inventario')
+def admin_inventario():
+    if session.get('rol') != 'Administrador':
+        return redirect(url_for('index'))
+    
+    conn = get_db_connection()
+    libros = conn.execute('SELECT * FROM Libros').fetchall()
+    conn.close()
+    return render_template('inventario.html', libros=libros)
+
+@app.route('/admin/prestamos')
+def admin_prestamos():
+    if session.get('rol') != 'Administrador':
+        return redirect(url_for('index'))
+    
+    conn = get_db_connection()
+    prestamos = conn.execute('SELECT * FROM Prestamos').fetchall()
+    conn.close()
+    return render_template('prestamos.html', prestamos=prestamos)
+
+@app.route('/admin/empleados')
+def admin_empleados():
+    if session.get('rol') != 'Administrador':
+        return redirect(url_for('index'))
+    
+    conn = get_db_connection()
+    usuarios = conn.execute('SELECT * FROM Usuarios_Sistema').fetchall()
+    conn.close()
+    return render_template('empleados.html', usuarios=usuarios)
+
+# --- Empleados rpute ---
 
 @app.route('/empleado')
 def empleado_panel():
@@ -59,30 +93,14 @@ def empleado_panel():
         return redirect(url_for('index'))
     return render_template('empleado.html')
 
-@app.route('/admin/inventario')
-def admin_inventario():
-    if session.get('rol') != 'Administrador':
-        return redirect(url_for('index'))
-    return render_template('inventario.html')
-
-@app.route('/admin/prestamos')
-def admin_prestamos():
-    if session.get('rol') != 'Administrador':
-        return redirect(url_for('index'))
-    return render_template('prestamos.html')
-
-@app.route('/admin/empleados')
-def admin_empleados():
-    if session.get('rol') != 'Administrador':
-        return redirect(url_for('index'))
-    return render_template('empleados.html')
+# --- Systesm route ---
 
 @app.route('/logout')
 def logout():
     session.clear()
     return redirect(url_for('index'))
 
-# --- EXECUTION, oleave at the buttom ---
+# --- Execute ---
 
 if __name__ == '__main__':
     app.run(debug=True)

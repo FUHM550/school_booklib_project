@@ -8,6 +8,18 @@
 </head>
 <body>
     <div class="contenedor-dashboard">
+                <nav class="sidebar">
+            <div class="logo-sidebar">
+                <h2>📖 Librería Pro</h2>
+            </div>
+            <ul>
+                <li><a href="{{ url_for('admin_panel') }}" class="activo"><span class="material-symbols-outlined">home</span> Inicio</a></li>
+                <li><a href="{{ url_for('admin_inventario') }}"><span class="material-symbols-outlined">inventory_2</span> Inventario</a></li>
+                <li><a href="{{ url_for('admin_prestamos') }}"><span class="material-symbols-outlined">menu_book</span> Préstamos</a></li>
+                <li><a href="{{ url_for('admin_empleados') }}"><span class="material-symbols-outlined">group</span> Empleados</a></li>
+                <li><a href="{{ url_for('logout') }}"><span class="material-symbols-outlined">logout</span> Salir</a></li>
+            </ul>
+        </nav>
         <main class="contenido-principal">
             <header class="barra-top"><h2>Control de Préstamos</h2></header>
             <section class="area-trabajo">
